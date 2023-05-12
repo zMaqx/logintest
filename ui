@@ -31,3 +31,43 @@ if __name__ == '__main__':
 #---------------------------------------------
 #
 main.mainloop()
+
+
+# NOVO -----------------------------------------***-**---
+import tkinter # koristi= tkinter.*
+import customtkinter
+#- # BOJA #6E728E"
+main = tkinter.Tk()
+main.configure(bg="#3E425E")
+#-label
+USRl = tkinter.Label(main, text="Username", bg="#3E425E", fg="#FFFFFF",font=("Lucida Console",25))
+USRl.place(relx=0.5,rely=0.2, anchor="n")
+PASl = tkinter.Label(main, text="Password", bg="#3E425E", fg="#FFFFFF",font=("Lucida Console",25))
+PASl.place(relx=0.5,rely=0.325, anchor="n")
+#-entry
+USRe = customtkinter.CTkEntry(main,width=200,font=("Lucida Console", 18),corner_radius=10, border_color="#6E728E", fg_color="#3E425E", text_color="#BBBDD4", height=35)
+USRe.place(relx=0.5,rely=0.25, anchor="n")
+PASe = customtkinter.CTkEntry(main,width=200,font=("Lucida Console", 18),corner_radius=10, border_color="#6E728E", fg_color="#3E425E", text_color="#BBBDD4", height=35)
+PASe.place(relx=0.5,rely=0.375, anchor="n")
+#-button
+REGb = customtkinter.CTkButton(main, text="Register",font=("Lucida Console", 20),corner_radius=15, border_color="#BBBDD4", fg_color="#6E728E", text_color="#FFFFFF", height=40,width=150)
+REGb.place(relx=0.5,rely=0.45, anchor="n")
+
+
+
+
+#- CENTER SCREEN -----------------------------
+if __name__ == '__main__':
+
+    w = 600
+    h = 800
+
+    ws = main.winfo_screenwidth()
+    hs = main.winfo_screenheight()
+    x = (ws/2) - (w/2)
+    y = (hs/2) - (h/2)
+
+    main.geometry('%dx%d+%d+%d' % (w, h, x, y))
+#---------------------------------------------
+#
+main.mainloop()
