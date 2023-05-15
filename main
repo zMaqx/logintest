@@ -1,0 +1,98 @@
+import tkinter # koristi= tkinter.*
+import customtkinter
+#- # BOJA #6E728E"
+main = tkinter.Tk()
+main.configure(bg="#2A2F34")
+
+usern = []
+passw = []
+#main Code
+
+
+
+def getInput():
+
+    usern = USRe.get()
+    passw = PASe.get()
+    create = False
+    
+    try:
+        full = f"{usern} | {passw}\n"
+        file = open("info.txt", "r")
+        lines = file.readlines()
+        for row in lines:
+            if row == full:
+                print("Account already exists")
+                create = False
+            else:
+                create = True
+            
+        if create == True:
+            file = open("info.txt", "at")
+            file.write(f"{usern} | {passw}\n")
+            print("Account added!")
+            create = False
+            file.close()            
+    except:
+        file = open("info.txt", "at")
+        file.write(f"{usern} | {passw}\n")
+        print("Account added!")
+        file.close()
+                
+def loginchange(event):
+    print("Clicked login")
+
+def enter(event):
+    logR.configure(foreground="#4F84C1")
+def leave(event):
+    logR.configure(foreground="#436FA1")
+#UI
+    
+#-label
+USRl = tkinter.Label(main, text="Username", bg="#2A2F34", fg="#FFFFFF",font=("Lucida Console",25))
+USRl.place(relx=0.5,rely=0.2, anchor="n")
+PASl = tkinter.Label(main, text="Password", bg="#2A2F34", fg="#FFFFFF",font=("Lucida Console",25))
+PASl.place(relx=0.5,rely=0.325, anchor="n")
+logR = tkinter.Label(main, text="Already have account?", bg="#2A2F34", fg="#436FA1", font=("Lucida Console", 10, "underline"))
+logR.place(relx=0.5,rely=0.425, anchor="n")
+#-entry
+USRe = customtkinter.CTkEntry(main,width=200,font=("Lucida Console", 18),corner_radius=10, border_color="#436FA1", fg_color="#27415E", text_color="#FFFFFF", height=35)
+USRe.place(relx=0.5,rely=0.25, anchor="n")
+PASe = customtkinter.CTkEntry(main,show="*",width=200,font=("Lucida Console", 18),corner_radius=10, border_color="#436FA1", fg_color="#27415E", text_color="#FFFFFF", height=35)
+PASe.place(relx=0.5,rely=0.375, anchor="n")
+#-button
+def x():
+    main.destroy()
+REGb = customtkinter.CTkButton(main, text="Register",font=("Lucida Console", 20),corner_radius=15, border_color="#436FA1", fg_color="#27415E", text_color="#FFFFFF", height=40,width=150
+                               ,hover_color="#315175",border_width=2.5, command=getInput)
+REGb.place(relx=0.5,rely=0.5, anchor="n")
+Closeb = customtkinter.CTkButton(main, text="×",command = x,font=("Lucida Console", 15, "bold"),corner_radius=7, border_color="#436FA1", fg_color="#27415E", text_color="#436FA1",
+                                 height=25,hover_color="#315175",border_width=2,width=25)
+Closeb.place(relx=0.95,rely=0.01, anchor="n")
+#-binds
+logR.bind("<Button-1>", loginchange)
+logR.bind("<Enter>", enter)
+logR.bind("<Leave>", leave)
+
+
+#- CENTER SCREEN -----------------------------
+if __name__ == '__main__':
+
+    w = 600
+    h = 800
+
+    ws = main.winfo_screenwidth()
+    hs = main.winfo_screenheight()
+    x = (ws/2) - (w/2)
+    y = (hs/2) - (h/2)
+
+    main.geometry('%dx%d+%d+%d' % (w, h, x, y))
+#---------------------------------------------
+#
+main.overrideredirect(1)
+
+
+
+#
+main.resizable(False, False)
+main.mainloop()
