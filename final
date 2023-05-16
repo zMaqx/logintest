@@ -1,0 +1,280 @@
+import tkinter # koristi= tkinter.*
+import customtkinter
+from customtkinter.windows.widgets import CTkButton
+from functools import partial
+from PIL import ImageTk,Image
+#- # BOJA #6E728E"
+main = tkinter.Tk()
+main.configure(bg="#2A2F34")
+
+
+
+#main Code
+def mainUI():
+    ui = tkinter.Tk()
+    main.destroy()
+
+    
+    #def...
+    
+    def openCalc():
+        UICalcb.configure(fg_color="#212529", hover="#212529")
+        
+    
+    def uix():
+        ui.destroy()
+
+    
+    #canvas
+    line1 = tkinter.Canvas(ui, width=2, height=1400, bg="#212529", highlightthickness=0)
+    line1.place(relx=0.125, rely=0.0, anchor="n")
+    line2 = tkinter.Canvas(ui, width=3000, height=2, bg="#212529", highlightthickness=0)
+    line2.place(relx=0.0, rely=0.125, anchor="n")
+    #line3 = tkinter.Canvas(ui, width=175, height=2, bg="#212529", highlightthickness=0)
+    #line3.place(relx=0.06125, rely=0.221, anchor="n")
+    #line4 = tkinter.Canvas(ui, width=175, height=2, bg="#212529", highlightthickness=0) #malo ljepse bez mozda?
+    #line4.place(relx=0.06125, rely=0.317, anchor="n")
+    # Za sliku
+    #image = Image.open("logo3.png")
+    #image = image.resize((50,50))
+    #photo = ImageTk.PhotoImage(image)
+    #logol = tkinter.Label(ui, image=photo, highlightthickness=0, borderwidth=0)
+    #logol.place(relx=0.25, rely=0.25, anchor="n")
+
+    #close button
+    UICloseb = customtkinter.CTkButton(ui, text="×",command = uix,font=("Lucida Console", 15, "bold"),corner_radius=7, border_color="#436FA1", fg_color="#27415E", text_color="#436FA1",
+                                 height=25,hover_color="#315175",border_width=2,width=25)
+    UICloseb.place(relx=0.98,rely=0.01, anchor="n")
+    #buttons
+    UICalcb = customtkinter.CTkButton(ui, text="Calculator", command = openCalc, font=("Inter", 20, "bold"), border_color="#2A2F34", corner_radius=0 , border_width=-1, fg_color="#2A2F34", text_color="#FFFFFF",
+                                      height=75, width=175, hover_color="#30363B")
+    UICalcb.place(relx=0.06175,rely=0.127, anchor="n")
+    UICalcb2 = customtkinter.CTkButton(ui, text="Calculator2", command = openCalc, font=("Inter", 20, "bold"), border_color="#2A2F34", corner_radius=0 , border_width=-1, fg_color="#2A2F34", text_color="#FFFFFF",
+                                      height=75, width=175, hover_color="#30363B")
+    UICalcb2.place(relx=0.06175,rely=0.227, anchor="n")
+    #30363B svijetlija verzija za hover color #dark boja 212529
+
+
+
+
+
+
+    if __name__ == '__main__':
+        w = 1400
+        h = 800
+        ws = ui.winfo_screenwidth()
+        hs = ui.winfo_screenheight()
+        x = (ws/2) - (w/2)
+        y = (hs/2) - (h/2)
+        ui.geometry('%dx%d+%d+%d' % (w, h, x, y))
+        
+    ui.configure(bg="#2A2F34")
+    
+    ui.overrideredirect(1)
+    ui.resizable(False, False)
+    ui.mainloop()
+
+
+
+
+
+# LOGIN / REGISTER sistem
+file = open("info.txt", "at")
+file.close()
+LOGb = None  # Define LOGb as a global variable
+REGb = None  # Define REGb as a global variable
+regR = None
+logR = None
+#
+def loginPopUp():
+    def closepopup():
+        pp.destroy()
+
+    pp = tkinter.Toplevel(main)
+    pp.resizable(False, False)
+    pp.overrideredirect(1)
+    #center
+    if __name__ == '__main__':
+
+        w = 350
+        h = 200
+
+        ws = main.winfo_screenwidth()
+        hs = main.winfo_screenheight()
+        x = (ws/2) - (w/2)
+        y = (hs/2) - (h/2)
+        pp.geometry('%dx%d+%d+%d' % (w, h, x, y))
+    #
+    pp.configure(bg="#3C434A")
+    #
+    closePP = customtkinter.CTkButton(pp, text="Okay",font=("Lucida Console", 15),corner_radius=15, border_color="#436FA1", fg_color="#27415E", text_color="#FFFFFF", height=30,width=100
+                               ,hover_color="#315175",border_width=2.5, command=closepopup)
+    closePP.place(relx=0.5,rely=0.65, anchor="n")
+    closel = tkinter.Label(pp, text="You have successfully \nregistered your account.\nPlease log in in order \nto use application.", bg="#3C434A", fg="#FFFFFF",font=("Lucida Console",12))
+    closel.place(relx=0.5,rely=0.2, anchor="n")
+    
+
+def loginChange(event):
+    global REGb, LOGb, regR, logR
+    LOGb = customtkinter.CTkButton(main, text="Log in",font=("Lucida Console", 20),corner_radius=15, border_color="#436FA1", fg_color="#27415E", text_color="#FFFFFF", height=40,width=150
+                               ,hover_color="#315175",border_width=2.5, command=login)
+    LOGb.place(relx=0.5,rely=0.5, anchor="n")    
+    USRe.configure(border_color="#436FA1", fg_color="#27415E")
+    regR = tkinter.Label(main, text="Don't have account?", bg="#2A2F34", fg="#436FA1", font=("Lucida Console", 10, "underline"))
+    regR.place(relx=0.5,rely=0.425, anchor="n")
+    
+    def enter2(event):
+        regR.configure(foreground="#4F84C1")
+    def leave2(event):
+        regR.configure(foreground="#436FA1")
+        
+    regR.bind("<Button-1>", backChange)
+    regR.bind("<Enter>", enter2)
+    regR.bind("<Leave>", leave2)
+    REGb.destroy() #brise se register button
+    logR.destroy() #brise se Already have account?
+    
+def backChange(event):
+    global REGb, LOGb, regR, logR
+    REGb = customtkinter.CTkButton(main, text="Register",font=("Lucida Console", 20),corner_radius=15, border_color="#436FA1", fg_color="#27415E", text_color="#FFFFFF", height=40,width=150
+                               ,hover_color="#315175",border_width=2.5, command=register)
+    REGb.place(relx=0.5,rely=0.5, anchor="n")
+    PASe.configure(border_color="#436FA1", fg_color="#27415E")
+    logR = tkinter.Label(main, text="Already have account?", bg="#2A2F34", fg="#436FA1", font=("Lucida Console", 10, "underline"))
+    logR.place(relx=0.5,rely=0.425, anchor="n")
+
+    def enter(event):
+        logR.configure(foreground="#4F84C1")
+    
+    def leave(event):
+        logR.configure(foreground="#436FA1")
+    
+    logR.bind("<Button-1>", loginChange)
+    logR.bind("<Enter>", enter)
+    logR.bind("<Leave>", leave)
+    LOGb.destroy() #brise se login button
+    regR.destroy() #brise se Dont have account?
+
+    
+def login():
+    usern = []
+    passw = []
+    usern = USRe.get().strip()
+    passw = PASe.get().strip()
+    full = f"{usern} | {passw}"
+    account_found = False
+    try:
+        with open("info.txt", "r") as file:
+            lines = file.readlines()
+            for row in lines:
+                if row.strip() == full:
+                    print("Logged in!")
+                    account_found = True
+                    PASe.configure(border_color="#436FA1", fg_color="#27415E")
+                    mainUI()
+                    break
+            if not account_found:
+                    print("Wrong password!")
+                    PASe.configure(border_color="#A14343", fg_color="#5E2727")
+    except:
+        print("Dont delete files pls ty <3")    
+    
+
+def register():
+    usern = []
+    passw = []
+    usern = USRe.get().strip()
+    passw = PASe.get().strip()
+    #full = f"{usern} | {passw}" - od stare verzije trenutno ne koristim mozda mi bude trebalo za log in
+    account_found = False
+
+    try:
+        with open("info.txt", "r") as file:
+            lines = file.readlines()
+            for row in lines:
+                savedusern = row.strip().split(" | ")[0]
+                if savedusern == usern or usern == " " or usern == "":
+                    print("Name is already taken!")
+                    account_found = True
+                    USRe.configure(border_color="#A14343", fg_color="#5E2727")
+                    break
+            if not account_found:
+                create = True
+                with open("info.txt", "a") as file:
+                    file.write(f"{usern} | {passw}\n")
+                    print("Account added!")
+                    loginPopUp()
+                    USRe.configure(border_color="#436FA1", fg_color="#27415E")
+    except:
+        print("Dont delete files pls ty <3")
+
+
+def loginchange(event):
+    print("Clicked login")
+
+def enter(event):
+    logR.configure(foreground="#4F84C1")
+def leave(event):
+    logR.configure(foreground="#436FA1")
+
+#from PIL import Image, ImageTk
+
+#logo1 = Image.open("logo3.png")
+#logo = ImageTk.PhotoImage(logo1)          #nista od slike ( ima border )
+#logoL = tkinter.Label(main, image = logo)
+#logoL.place(relx=0.7,rely=0.5, anchor="n")
+
+    
+#UI
+
+
+#-label
+USRl = tkinter.Label(main, text="Username", bg="#2A2F34", fg="#FFFFFF",font=("Lucida Console",25))
+USRl.place(relx=0.5,rely=0.2, anchor="n")
+PASl = tkinter.Label(main, text="Password", bg="#2A2F34", fg="#FFFFFF",font=("Lucida Console",25))
+PASl.place(relx=0.5,rely=0.325, anchor="n")
+logR = tkinter.Label(main, text="Already have account?", bg="#2A2F34", fg="#436FA1", font=("Lucida Console", 10, "underline"))
+logR.place(relx=0.5,rely=0.425, anchor="n")
+
+#-entry
+USRe = customtkinter.CTkEntry(main,width=200,font=("Lucida Console", 18),corner_radius=10, border_color="#436FA1", fg_color="#27415E", text_color="#FFFFFF", height=35)
+USRe.place(relx=0.5,rely=0.25, anchor="n")
+PASe = customtkinter.CTkEntry(main,show="*",width=200,font=("Lucida Console", 18),corner_radius=10, border_color="#436FA1", fg_color="#27415E", text_color="#FFFFFF", height=35)
+PASe.place(relx=0.5,rely=0.375, anchor="n")
+
+#-button
+def x():
+    main.destroy()
+REGb = customtkinter.CTkButton(main, text="Register",font=("Lucida Console", 20),corner_radius=15, border_color="#436FA1", fg_color="#27415E", text_color="#FFFFFF", height=40,width=150
+                               ,hover_color="#315175",border_width=2.5, command=register)
+REGb.place(relx=0.5,rely=0.5, anchor="n")
+Closeb = customtkinter.CTkButton(main, text="×",command = x,font=("Lucida Console", 15, "bold"),corner_radius=7, border_color="#436FA1", fg_color="#27415E", text_color="#436FA1",
+                                 height=25,hover_color="#315175",border_width=2,width=25)
+Closeb.place(relx=0.95,rely=0.01, anchor="n")
+
+#-binds
+logR.bind("<Button-1>", loginChange)
+logR.bind("<Enter>", enter)
+logR.bind("<Leave>", leave)
+
+
+
+
+#- CENTER SCREEN -----------------------------
+if __name__ == '__main__':
+
+    w = 600
+    h = 800
+
+    ws = main.winfo_screenwidth()
+    hs = main.winfo_screenheight()
+    x = (ws/2) - (w/2)
+    y = (hs/2) - (h/2)
+
+    main.geometry('%dx%d+%d+%d' % (w, h, x, y))
+#---------------------------------------------
+#
+main.overrideredirect(1)
+#
+main.resizable(False, False)
+main.mainloop()
